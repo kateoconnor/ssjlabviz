@@ -1,5 +1,21 @@
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-import seaborn as sns  # data visualization library  
+import numpy as np 
+import pandas as pd 
+import seaborn as sns   
 import matplotlib.pyplot as plt
 import time
+
+data = pd.read_csv('california_2.csv')
+
+cols=[49, 50, 51, 110]
+data.drop(data.columns[cols],axis=1,inplace=True)
+
+data.head()
+
+#institution x year violin plot
+plt.figure(figsize = (15,10))
+
+ax = sns.violinplot(x="institution_name", y="sf_year_sgn", data=data)
+sns.set(font_scale = 3)
+plt.xticks(rotation=45)
+ax.set_xlabel("Institution", fontsize = 20)
+ax.set_ylabel("Year", fontsize = 20)
