@@ -19,3 +19,4 @@ sns.set(font_scale = 3)
 plt.xticks(rotation=45)
 ax.set_xlabel("Institution", fontsize = 20)
 ax.set_ylabel("Year", fontsize = 20)
+
