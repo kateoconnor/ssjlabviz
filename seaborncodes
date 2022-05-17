@@ -1,0 +1,55 @@
+import numpy as np 
+import pandas as pd 
+import seaborn as sns   
+import matplotlib.pyplot as plt
+import time
+
+#This is a CSV file I can upload to dropbox 
+data = pd.read_csv('california_2.csv')
+
+#This drops columns that seaborn doesn't like 
+cols=[49, 50, 51, 110]
+data.drop(data.columns[cols],axis=1,inplace=True)
+
+data.head()
+
+#institution x year violin plot
+plt.figure(figsize = (15,10))
+
+ax = sns.violinplot(x="institution_name", y="sf_year_sgn", data=data)
+sns.set(font_scale = 3)
+plt.xticks(rotation=45)
+ax.set_xlabel("Institution", fontsize = 20)
+ax.set_ylabel("Year", fontsize = 20)
+
+
+#institution x age violin plot
+plt.figure(figsize = (15,10))
+
+ax = sns.violinplot(x="institution_name", y="age", data=data)
+sns.set(font_scale = 2)
+plt.xticks(rotation=45)
+ax.set_xlabel("Institution", fontsize = 20)
+ax.set_ylabel("Age", fontsize = 20)
+
+plt.figure(figsize = (15,10))
+
+#institution x age, split sex, violin plot 
+ax = sns.violinplot(x="institution_name", y="age", data=data,hue="sex",
+               split=True)
+sns.set(font_scale = 2)
+plt.xticks(rotation=45)
+ax.set_xlabel("Institution", fontsize = 20)
+ax.set_ylabel("Age", fontsize = 20)
+
+
+#institution x year, split sex, violin plot
+plt.figure(figsize = (15,10))
+
+ax = sns.violinplot(x="institution_name", y="sf_year_sgn", data=data, hue="sex",
+               split=True)
+sns.set(font_scale = 2)
+plt.xticks(rotation=45)
+ax.set_xlabel("Institution", fontsize = 20)
+ax.set_ylabel("Year", fontsize = 20)
+
