@@ -4,8 +4,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import time
 
+#This is a CSV file I can upload to dropbox 
 data = pd.read_csv('california_2.csv')
 
+#This drops columns that seaborn doesn't like 
 cols=[49, 50, 51, 110]
 data.drop(data.columns[cols],axis=1,inplace=True)
 
